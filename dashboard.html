@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/7581c593ae.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="projects.css" />
+    <link rel="stylesheet" href="tickets.css" />
+    <link rel="stylesheet" href="comments.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <!--Dashboard Navigation-->
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="#" onClick="toggleDashboard()">
+              <span class="icon"><i class="fas fa-bug"></i></span>
+              <span class="title"><h2>The BugTracker</h2></span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" onClick="dashboard()">
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="title hey">Dashbouard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick="projectsDashboard()">
+              <span class="icon"><i class="fas fa-project-diagram"></i></span>
+              <span class="title">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick="ticketsDashboard()">
+              <span class="icon"><i class="fas fa-bug"></i></span>
+              <span class="title">Ticket</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="title">Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-address-book"></i></span>
+              <span class="title">Contact</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+              <span class="title">Log Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="topbar">
+        <div class="toggle" onClick="toggleManu()"></div>
+        <div class="search">
+          <label>
+            <input type="text" placeholder="Search" />
+            <i class="fas fa-search"></i>
+          </label>
+        </div>
+        <div class="user">
+          <img src="Pic/Daniel Chochlinski head shot.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+    <!--End of Dashboard Navigation-->
+
+    <!--Start of Dashboard Main-->
+    <div class="main">
+      <div class="cardBox">
+        <div class="card">
+          <div>
+            <div id="numberOfProjects" class="numbers"></div>
+            <div class="cardName">Total Projects</div>
+          </div>
+          <div class="iconBox">
+            <i class="far fa-eye"></i>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div id="numberOfTickets" class="numbers"></div>
+            <div class="cardName">Total Tickets</div>
+          </div>
+          <div class="iconBox">
+            <i class="far fa-eye"></i>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers">1</div>
+            <div class="cardName">New Bugs</div>
+          </div>
+          <div class="iconBox">
+            <i class="far fa-eye"></i>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="numbers">1</div>
+            <div class="cardName">Comments</div>
+          </div>
+          <div class="iconBox">
+            <i class="fas fa-comments"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="recentBugs">
+          <div class="cardHeader">
+            <h2>Recent Tickets</h2>
+            <a
+              href="#"
+              id="viewAllProjects"
+              class="btn"
+              onClick="showAllTickets()"
+              >View All</a
+            >
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <td>Project ID</td>
+                <td>Description</td>
+                <td>Impotance</td>
+              </tr>
+            </thead>
+            <tbody id="dashboardRecentTicketList"></tbody>
+          </table>
+        </div>
+        <div class="recentProjects">
+          <div class="cardHeader">
+            <h2>Recent Projects</h2>
+            <a
+              href="#"
+              id="viewAllProjects"
+              class="btn"
+              onClick="showAllProjects()"
+              >View All</a
+            >
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <td>Details</td>
+                <td>Importance</td>
+                <td>Target Date</td>
+              </tr>
+            </thead>
+            <tbody id="dashboardRecentProjectList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- End of Dashboard Main-->
+
+    <!-- Start of Dashboard Project-->
+    <div class="projects hide">
+      <div class="projectDetails">
+        <div class="allProjects">
+          <div class="cardHeader">
+            <h2>All Projects</h2>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <td>ID</td>
+                <td>Description</td>
+                <td>Status</td>
+                <td>Impotance</td>
+                <td>Date</td>
+                <td>Target Date</td>
+              </tr>
+            </thead>
+            <tbody id="projectList"></tbody>
+          </table>
+          <button class="addProject" onClick="openModalProject()">
+            Add Project
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End of Dashboard Project-->
+
+    <!--Start of Dashboard Ticket-->
+    <div class="tickets hide">
+      <div class="ticketDetails">
+        <div class="allTickets">
+          <div class="cardHeader">
+            <h2>All Ticket</h2>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <td></td>
+                <td>Title</td>
+                <td>Project ID</td>
+                <td>Developer Assigned</td>
+                <td>Ticket Prioroty</td>
+                <td>Ticket Status</td>
+                <td>Ticket Type</td>
+                <td>Created</td>
+              </tr>
+            </thead>
+            <tbody id="ticketList"></tbody>
+          </table>
+          <button class="addTicket" onClick="openModalTicket()">
+            Add Ticket
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--End of Dashboard Ticket-->
+
+    <!--Overlay Modal + Project Input-->
+    <div id="overlayProjectInput" class="overlay hide">
+      <form type="submit" id="projectForm" class="createProjectModal">
+        <h2>Create New Project</h2>
+
+        <label for="id">ID</label>
+        <input type="text" id="id" placeholder="ID" />
+
+        <label for="details">Description</label>
+        <input type="text" id="details" placeholder="Description" />
+
+        <label for="status">Status</label>
+        <select type="text" id="status" placeholder="Status">
+          <option value="Not Started">Not Started</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Done">Done</option>
+          <option value="Late">Late</option>
+        </select>
+
+        <label for="importance">Importance</label>
+        <select type="text" id="importance" placeholder="Importance">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" placeholder="Date" />
+
+        <label for="targetDate">Target Date</label>
+        <input type="date" id="targetDate" placeholder="Target Date" />
+
+        <label for="personelAssigned">Assign Personel</label>
+        <input type="text" id="assignPersonel" placeholder="Assign Personel" />
+
+        <button class="close" type="button" onClick="closeModalProject()">
+          X
+        </button>
+        <button type="submit" class="createProjectBtn">Create Project</button>
+      </form>
+    </div>
+    <!--End of Overlay Modal + Project Input-->
+
+    <!--Overlay Modal + Ticket Input-->
+    <div id="overlayTicketInput" class="overlay hide">
+      <form type="submit" id="ticketForm" class="createTicketModal">
+        <h2>Create New Ticket</h2>
+
+        <label for="title-Ticket">Title</label>
+        <input type="text" id="title-Ticket" placeholder="Title" />
+
+        <label for="projectName-Ticket">Choose from Projects</label>
+        <select id="projectId">
+          <option style="display: none"></option>
+        </select>
+
+        <label for="description-Ticket">Description</label>
+        <input type="text" id="desctiption-Ticket" placeholder="Describe" />
+
+        <label for="personelAssigned">Assign Personel</label>
+        <input
+          type="text"
+          id="assignPersonel-Ticket"
+          placeholder="Assign Personel"
+        />
+
+        <label for="importance-Ticket">Priority</label>
+        <select type="text" id="importance-Ticket" placeholder="Importance">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+
+        <label for="status-Ticket">Status</label>
+        <select type="text" id="status-Ticket" placeholder="Status">
+          <option value="Not Started">Not Started</option>
+          <option value="Closed">Closed</option>
+          <option value="Open">Open</option>
+        </select>
+
+        <label for="type-Ticket">Ticket Type</label>
+        <input type="text" id="type-Ticket" placeholder="Type" />
+
+        <label for="date-Ticket">Date</label>
+        <input type="date" id="date-Ticket" placeholder="Date" />
+
+        <button class="close" type="button" onClick="closeModalTicket()">
+          X
+        </button>
+        <button type="submit" class="createProjectBtn">Create Project</button>
+      </form>
+    </div>
+    <!--End of Overlay Modal + Ticket Input-->
+
+    <!--Start of Overlay Project Details -->
+    <div id="overlayProjectDetails" class="overlay hide">
+      <div class="projectContainer">
+        <div class="heading">
+          <h2 class="projectDetailName"></h2>
+          <br />
+          <i class="fas fa-chevron-down" onClick="control()"></i>
+        </div>
+        <div id="controlProject" class="control hide">
+          <button class="btn delete deleteProject">Delete Project</button>
+          <button class="btn edit editProject">Edit Project</button>
+        </div>
+        <div class="projectDetailGrid">
+          <div class="assignedTicketsList">
+            <h2>Tickets for this Project</h2>
+            <table>
+              <thead>
+                <tr>
+                  <td>Title</td>
+                  <td>Developer</td>
+                  <td>Status</td>
+                  <td>Date</td>
+                </tr>
+              </thead>
+              <tbody
+                id="assignedTicketsList"
+                onClick="openTicketDetail()"
+              ></tbody>
+            </table>
+          </div>
+          <div class="assignedPersonelProject">
+            <h2>Assigned Personel</h2>
+            <table>
+              <thead>
+                <tr>
+                  <td>User Name</td>
+                  <td>Email</td>
+                  <td>Role</td>
+                </tr>
+              </thead>
+              <tbody id="assignPersonelList"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <button class="btn" onClick="closeProjectDetail()">X</button>
+    </div>
+    <!--End of Overlay Project Details-->
+
+    <!-- Start of Overlay Ticket Detials -->
+    <div id="overlayTicketDetials" class="overlay hide">
+      <div class="ticketContainer">
+        <div class="heading">
+          <h2>Details for Ticket</h2>
+          <br />
+          <i class="fas fa-chevron-down" onClick="control()"></i>
+        </div>
+        <div id="controlTicket" class="control hide">
+          <button class="btn delete deleteTicket">Delete Project</button>
+          <button class="btn edit editTicket">Edit Project</button>
+        </div>
+        <div class="ticketDetailGrid">
+          <div class="detailsForTickets">
+            <h2 class="ticketDetailName"></h2>
+            <table>
+              <thead>
+                <tr>
+                  <td>Ticket Title</td>
+                  <td>Project ID</td>
+                  <td>Developer Assigned</td>
+                  <td>Ticket Priority</td>
+                  <td>Ticket Status</td>
+                  <td>Ticket Type</td>
+                  <td>Created</td>
+                </tr>
+              </thead>
+              <tbody id="detailsForTicket"></tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <td>Description</td>
+                </tr>
+              </thead>
+              <tbody id="descriptionForTicket"></tbody>
+            </table>
+          </div>
+          <div class="ticketComments">
+            <h6 id="alertComments">All comments for this ticket</h6>
+            <br />
+            <i class="fas fa-chevron-down" onClick="controlCommentButton()"></i>
+            <div id="controlComment" class="control hide">
+              <button class="btn add addComment" onClick="openCommentModal()">
+                Add Comment
+              </button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <td>Commenter</td>
+                  <td>Message</td>
+                  <td>Created</td>
+                </tr>
+              </thead>
+              <tbody id="commentList"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <button class="btn" onClick="closeTicketDetail()">X</button>
+    </div>
+    <!-- End of Overlay Ticket Detials -->
+
+    <!--Start of Add Comment Modal -->
+    <div id="overlayCommentInput" class="overlay hide">
+      <form type="submit" id="commentForm" class="createCommentModal">
+        <h2>add New Comment</h2>
+
+        <label for="commenter">By</label>
+        <input type="text" id="commenter" placeholder="By" />
+
+        <label for="message">Message</label>
+        <input type="text" id="message" placeholder="Message" />
+
+        <label for="dateComment">Created</label>
+        <input type="date" id="dateComment" placeholder="Date" />
+
+        <button class="close" type="button" onClick="closeCommentModal()">
+          X
+        </button>
+        <button type="submit" class="createProjectBtn">add Comment</button>
+      </form>
+    </div>
+    <!-- End of Add Comment Modal -->
+
+    <script src="project.js"></script>
+  </body>
+</html>

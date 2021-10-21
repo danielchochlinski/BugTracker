@@ -1,0 +1,340 @@
+/*==== Ticket Dashboard ====*/
+.tickets {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background-color: white;
+  transition: 0.5s;
+}
+
+.tickets.active {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.ticketDetails {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0;
+  grid-gap: 20px;
+}
+
+.ticketDetails .allTickets {
+  position: relative;
+  min-width: 530px;
+  background: #eee;
+  box-shadow: 0 8px 8px -4px var(--main-color);
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardHeader h2 {
+  font-weight: 600;
+}
+
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  background: rgb(212, 56, 82);
+  text-decoration: none;
+  border-radius: 6px;
+  color: black;
+}
+
+.ticketDetails table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.ticketDetails table thead td {
+  font-weight: 600;
+}
+
+.ticketDetails .allTickets table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ticketDetails .allTickets table tr:last-child {
+  border-bottom: none;
+}
+
+.ticketDetails .allTickets table tbody tr:hover {
+  background: white;
+  color: black;
+}
+
+.ticketDetails .allTickets table tr td {
+  padding: 9px 5px;
+}
+
+.ticketDetails .allTickets table thead tr td:last-child,
+.ticketDetails .allTickets table tbody tr td:last-child {
+  text-align: right;
+}
+
+.ticketDetails .allTickets table tbody tr {
+  cursor: pointer;
+}
+
+.status {
+  position: relative;
+  padding: 2px 4px;
+  background-color: rgb(53, 47, 47);
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.addTicket {
+  display: flex;
+  position: relative;
+  text-align: center;
+  left: 45%;
+  padding: 5px 10px;
+  background: white;
+  text-decoration: none;
+  border-radius: 2px;
+  color: black;
+}
+
+.addTicket:hover {
+  background: white;
+}
+
+/*==== End of Ticket Dashboard ====*/
+
+/*==== Create Ticket Overlay =====*/
+
+.overlay {
+  position: relative;
+  transition: 0.5s;
+  width: calc(100% - 300px);
+  height: 100vh;
+  left: 300px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.overlay.active {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+
+.createTicketModal {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: white;
+  border-radius: 20px;
+  width: 95%;
+  height: 50%;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.createTicketModal select {
+  width: 160px;
+}
+
+.createTicketModal select option {
+  color: black;
+}
+
+.close {
+  position: absolute;
+  width: 30px;
+  left: 40px;
+  top: 27%;
+  align-items: center;
+  background-color: pink;
+  border: 2px solid gray;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 25px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.close:hover {
+  background: solid gray;
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .close {
+    padding: 0 40px;
+  }
+}
+
+
+/* Detials for Ticket Detials Modal */
+
+.ticketDetailGrid {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0;
+  margin-top: 0px;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.ticketContainer {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: white;
+  text-align: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+}
+
+.ticketContainer h2 {
+  text-align: center;
+  margin-top: 20px;
+  
+}
+
+.ticketDetailGrid .assignedTicketList {
+  position: relative;
+  display: grid;
+  min-width: 530px;
+  background: #eee;
+  box-shadow: 0 8px 8px -4px var(--main-color);
+  padding: 20px;
+}
+
+.detailsForTickets {
+  margin-top: 10px;
+}
+
+.ticketDetailGrid table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.ticketDetailGrid table thead td {
+  font-weight: 600;
+}
+/* Ticket List Table */
+
+.ticketDetailGrid .detailsForTickets table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ticketDetailGrid .detailsForTickets table tr:last-child {
+  border-bottom: none;
+}
+
+.ticketDetailGrid .detailsForTickets table tbody tr:hover {
+  background: white;
+  color: black;
+}
+
+.ticketDetailGrid .detailsForTickets table tr td {
+  padding: 9px 5px;
+}
+
+.ticketDetailGrid .detailsForTickets table tbody tr {
+  cursor: pointer;
+}
+
+.ticketDetailGrid .detailsForTickets table tbody td {
+background:#CCCC;
+}
+
+#ticketDescription {
+  position: relative;
+  left: 44%;
+}
+/* Assigned User List */
+
+.ticketComments {
+  margin-top: 0px;
+  text-align: left;
+}
+
+.ticketComments h6 {
+  padding: 15px;
+  text-align: center;
+}
+.ticketDetailGrid .ticketComments table tr {
+  margin-top: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  
+}
+
+.ticketDetailGrid .ticketComments table tr:last-child {
+  border-bottom: none;
+}
+
+.ticketDetailGrid .ticketComments table tbody tr:hover {
+  background: white;
+  color: black;
+}
+
+.ticketDetailGrid .ticketComments table tr td {
+  padding: 15px 10px;
+  
+}
+.ticketDetailGrid .ticketComments table tbody tr {
+  cursor: pointer;
+}
+
+.ticketDetailGrid .ticketComments table tbody td {
+background:#CCCC;
+}
+
+.control {
+  align-items: center;
+}
+
+/* all inputs */
+/* input {
+  width: 200px;
+  height:80px;
+} 
+
+select {
+    width: 200px;
+  height:80px;
+
+} */
+
+
+
+
+

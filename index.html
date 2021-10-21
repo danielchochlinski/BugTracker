@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="enter.css" />
+    <title>Enter</title>
+  </head>
+  <body>
+    <!-- Signup form -->
+    <div id="userfront-oddral"></div>
+    <!-- <div class="enter-container">
+      <h1>The BuggTracker</h1>
+
+      <div class="login-container">
+        <h1>Login</h1>
+        <label>Email</label>
+        <div class="email">
+          <input type="text" placeholder="Email" />
+        </div>
+        <label>Password</label>
+        <div class="password">
+          <input type="text" placeholder="Password" />
+        </div>
+      </div>
+      <div class="btn btn-container">
+        <button class="login-account-btn">Login</button>
+        <button class="create-account-btn">Create Account</button>
+      </div>
+
+      <div class="create-container hide">
+        <h1>Create Account</h1>
+        <label>Enter Email</label>
+        <div class="enterEmail">
+          <input type="text" placeholder="Enter Email" />
+          <input type="text" placeholder="Enter Password">
+           <input type="text" placeholder="Reenter Password">
+        </div>
+
+      </div>
+
+    </div> -->
+
+    <script id="Userfront-script">
+      (function (m, o, d, u, l, a, r, i, z, e) {
+        u[m] = {
+          rq: [],
+          ready: function (j) {
+            u[m].rq.push(j);
+          },
+          m: m,
+          o: o,
+          d: d,
+          r: r,
+        };
+        function j(s) {
+          return encodeURIComponent(btoa(s));
+        }
+        z = l.getElementById(m + "-" + a);
+        r = u.location;
+        e = [
+          d +
+            "/page/" +
+            o +
+            "/" +
+            j(r.pathname) +
+            "/" +
+            j(r.host) +
+            "?t=" +
+            Date.now(),
+          d,
+        ];
+        e.map(function (w) {
+          i = l.createElement(a);
+          i.defer = 1;
+          i.src = w;
+          z.parentNode.insertBefore(i, z);
+        });
+        u.amvartem = m;
+      })(
+        "Userfront",
+        "wbm5xvb4",
+        "https://cdn.userfront.com/toolkit",
+        window,
+        document,
+        "script"
+      );
+    </script>
+  </body>
+</html>
